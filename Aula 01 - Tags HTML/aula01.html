@@ -4,13 +4,14 @@
 <head>
     <title>Primeira Página | Santander Coders</title>
     <meta charset='UTF-8' />
+    <link rel="stylesheet" type="text/css" href="./aula01.css"/>
 </head>
 
 <body>
     <!-- DIVISÃO DE CONTEÚDO -->
     <div>Hello World 1!</div>
     <div>
-        Hello <span style="color: red;">World 2!</span>
+        Hello <span class="texto-colorido">World 2!</span>
         <p>
             Mussum Ipsum, cacilds vidis litro abertis.
             Copo furadis é disculpa de bebadis, arcu quam euismod magna.
@@ -18,14 +19,16 @@
             Posuere libero varius. Nullam a nisl ut ante blandit hendrerit.
             Aenean sit amet nisi. Sapien in monti palavris qui num significa nadis i pareci latim.
         </p>
-        <pre>
+        <pre class="texto-colorido">
             Mussum Ipsum, cacilds vidis litro abertis.
-            Copo furadis é disculpa de bebadis, arcu quam euismod magna.
+            <div>
+                <span class="texto-colorido">Copo furadis é disculpa de bebadis, arcu quam euismod magna.</span>
+            </div>
             Delegadis gente finis, bibendum egestas augue arcu ut est.
             Posuere libero varius. Nullam a nisl ut ante blandit hendrerit.
             Aenean sit amet nisi. Sapien in monti palavris qui num significa nadis i pareci latim.
         </pre>
-
+        <i>Sei lá das quantas</i>
     </div>
 
     <!-- FORMATAÇÃO DE TEXTO -->
@@ -35,17 +38,26 @@
     <h4>Título no Estilo 4</h4>
     <h5>Título no Estilo 5</h5>
     <h6>Título no Estilo 6</h6>
-    <p>
+    <p id="mussum-ipsum" class="texto-colorido">
         <b>Mussum Ipsum, cacilds vidis litro abertis.</b>
         <i>Copo furadis é disculpa de bebadis, arcu quam euismod magna.</i>
+        <span>
+            <i>Copo furadis é disculpa de bebadis, arcu quam euismod magna.</i>
+        </span>
         <u>Delegadis gente finis, bibendum egestas augue arcu ut est.</u>
         <strong>Posuere libero varius. Nullam a nisl ut ante blandit hendrerit.</strong>
+        <s>Posuere libero varius. Nullam a nisl ut ante blandit hendrerit.</s>
+        <del>Posuere libero varius. Nullam a nisl ut ante blandit hendrerit.</del>
+        <ins>Nullam a nisl ut ante blandit hendrerit.</ins>
         <sup>Aenean sit amet nisi. Sapien in monti palavris qui num significa nadis i pareci latim.</sup>
         <sub>Aenean sit amet nisi. Sapien in monti palavris qui num significa nadis i pareci latim.</sub>
     </p>
 
     <!-- REFERÊNCIAS -->
-    <a href="https://letscode.com.br/" target="_blank">Algum outro texto</a>
+    <a href="https://letscode.com.br/" target="_self">Algum outro texto</a>
+    <div>
+        <img src="https://i.pinimg.com/originals/ac/03/4a/ac034a6a238260648686101799d59767.jpg" alt="Link Doguinho" width="150px" height="100px"/>
+    </div>
 </body>
 
 </html>

@@ -1,0 +1,29 @@
+.texto-colorido {
+  display: block;
+  color: red;
+  margin: 10px 5px 15px;
+}
+
+#mussum-ipsum {
+  color: blue;
+  margin-bottom: 25px;
+  text-align: right;
+}
+
+p {
+  margin: 0;
+}
+
+#mussum-ipsum > i {
+  color: green;
+  text-align: center;
+}
+
+pre .texto-colorido {
+  color: #ccc;
+  text-align: justify;
+}
+
+.texto-colorido:hover {
+  color: purple;
+}

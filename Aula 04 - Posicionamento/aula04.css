@@ -1,0 +1,53 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* posicionamento */
+
+#caixinha1 {
+  position: relative;
+  /* top: 10px; */
+  left: 20px;
+}
+
+#caixinha2 {
+  position: fixed;
+  bottom: 10%;
+  right: 10px;
+}
+
+#caixinha3 {
+  position: relative;
+  /* top: 25px; */
+  left: 10px;
+}
+
+/* visualização */
+
+#caixona {
+  border: 3px solid red;
+  height: 1000px;
+  width: 100px;
+}
+
+#caixinha1 {
+  height: 10px;
+  width: 10px;
+  background-color: lightblue;
+  /* border: 2px solid blue; */
+}
+
+#caixinha2 {
+  height: 10px;
+  width: 10px;
+  background-color: pink;
+  border: 2px solid magenta;
+}
+
+#caixinha3 {
+  height: 10px;
+  width: 10px;
+  background-color: lightgreen;
+  /* border: 2px solid green; */
+}

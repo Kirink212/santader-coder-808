@@ -1,0 +1,36 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap-reverse;
+}
+
+.element {
+  width: 100px;
+  min-height: 30px;
+  border: 1px solid black;
+}
+
+#div1 {
+  background-color: green;
+  min-height: 60px;
+}
+
+#div2 {
+  background-color: pink;
+}
+
+#div3 {
+  background-color: purple;
+}
+
+#div4 {
+  background-color: yellow;
+}

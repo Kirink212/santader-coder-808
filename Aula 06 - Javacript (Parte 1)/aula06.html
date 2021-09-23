@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Sexta Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <h1>Olá, seja bem-vindo!</h1>
+    
+</body>
+
+<script>
+    // 1) Variáveis
+    let a = 5;
+
+    const string1 = "Olá, tudo bem?";
+    const string2 = 'Olá, tudo bem?';
+
+    let b = 5.6;
+    let booleana = true;
+
+    // Valores falsy (em uma condição são considerados como false)
+    console.log(undefined);
+    console.log(null);
+    console.log(0);
+    console.log('');
+    console.log("");
+
+    // Valor false
+    console.log(false);
+
+    // 0 = 1?? Não tem sentido matemático
+    // PORÉM
+    // faz todo sentido em programação
+    a = a + 1;
+
+    console.log(b);
+    console.log(a);
+    console.log(string1);
+    console.log(string2);
+
+    // 2) Funções
+    // quadrado(x) = x^2 -> definindo/declarando a função
+    console.log(converte_celsius_fahr(15));
+    // console.log(soma(1, 5)); -> não funciona
+
+    function quadrado(x) {
+        return x**2;
+    }
+
+    // quadrado(2) => 4 -> chamando a função
+    console.log(quadrado(2));
+
+    // Exemplo 1: Fazer uma função que converte celsius para fahrenheit
+    // tf = 1.8 * tc + 32
+    function converte_celsius_fahr(tc) {
+        return 1.8 * tc + 32;
+    }
+
+    let tf = converte_celsius_fahr(31);
+    console.log(tf);
+
+    // Exemplo 2: Fazer uma função que some dois números
+    const soma = function(x, y) {
+        return x + y;
+    }
+
+    console.log(soma(1, 5));
+
+    // Exemplo 3: Fazer uma função que printa "Oi, tudo bem?"
+    const saudacao = () => console.log("Oi, tudo bem?");
+
+    console.log(saudacao);
+    console.log(saudacao());
+    saudacao();
+
+    const print = (texto, x) => console.log(texto, x);
+    const print_safadao = console.log;
+
+    print("O valor de a é", a);
+
+    print_safadao(a, b, string1);
+
+    // Exemplo 4: Escopo de uma função
+    function exemplo(joazinho, mariazinha = 36) {
+        console.log(x);
+        console.log(joazinho);
+        var x = 2;
+    }
+
+    exemplo();
+    // console.log(joazinho); -> não funfa
+    // console.log(x); -> não funciona
+
+    // 4) Operações Aritméticas
+    print_safadao(12 + 13);
+    print_safadao(12 - 13);
+    print_safadao(12 * 13);
+    print_safadao(2 ** 5);
+    print_safadao(2 / 5);
+    print_safadao(-25 % 5);
+    
+    print_safadao(Math.abs(5 - 6));
+    print_safadao(Math.ceil(1 / 3));
+    print_safadao(Math.floor(1 + 1 / 3));
+    print_safadao(Math.max(1, 2, 4, 1, 7, 3));
+    print_safadao(Math.min(1, 2, 4, 1, 7, 3));
+    print_safadao(Math.pow(5, 6));
+    print_safadao(Math.sqrt(3));
+    print_safadao(Math.random());
+    print_safadao(Math.round(4.321));
+    print_safadao(Math.round(4.5));
+    print_safadao(Math.round(4.78));
+    print_safadao(Math.PI);
+    print_safadao(Math.sign(-5));
+    print_safadao(Math.sign(9));
+</script>
+
+</html>

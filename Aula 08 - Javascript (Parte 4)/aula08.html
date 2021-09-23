@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Sétima Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <h1>Olá, seja bem-vindo!</h1>
+    
+</body>
+
+<script>
+
+    // 7) Arrays:
+
+    // Valor indexados por: 0 - 1 - 2 - 3 - 4 - 5 - 6 - 7
+    let array = [5, 1, 3.7, "ABCDEFGH", 'Olá, tudo bem?', true, null, undefined];
+
+    // Acessando os valores
+    console.log(array[3]);
+    console.log(array[7]);
+    console.log(array[0]);
+    console.log(array.length);
+    console.log(array[array.length - 1]);
+
+    let array_vazio = [];
+    console.log(array_vazio[array_vazio.length - 1]); // undefined
+    console.log(array_vazio.length); // ZERO
+
+    // Substituir os valores
+    array[6] = [3, 4, 5, 6, 7];
+    array[1] += 9;
+    array[10] = ['a', 'c', 'e'];
+    console.log(array[8]);
+    console.log(array);
+
+    // Adicionar um novo valor
+    array.push('hoje o dia está tão lindo');
+    console.log(array);
+
+    array.unshift('hoje o dia está meio zoado');
+    console.log(array);
+
+    // Exemplo: Cada nota deve ser substituída pelo seu respectivo conceito
+    let array_notas = [3.7, 8.3, 7.6, 2.5, 5.9, 9.7];
+    const converte_nota = (nota) => {
+        let conceitos = ["F", "F", "F", "F", "F", "D", "D", "C", "B", "A", "A"];
+
+        return conceitos[Math.floor(nota)];
+    }
+
+    // for genérico
+    console.log(array_notas);
+    for (let i = 0; i < array_notas.length; i++) {
+        array_notas[i] = converte_nota(array_notas[i]);
+    }
+    console.log(array_notas);
+
+    // for - of
+    for (let nota of array_notas) {
+        console.log(nota);
+    }
+    console.log(array_notas);
+
+    // for - in
+    for (const i in array_notas) {
+        console.log(array_notas[i]);
+    }
+    console.log(array_notas);
+
+    // Printando em formato de tabela (index - value)
+    console.table(array_notas);
+
+    // Outros métodos importantes
+    console.log(array_notas.indexOf("F"));
+    console.log(array_notas.indexOf("F", 2));
+
+    array_notas = [3.7, 8.3, 7.6, 2.5, 5.9, 9.7];
+    console.log(array_notas.indexOf(5.9)); // encontrou na posição 4
+    console.log(array_notas.indexOf("5.9")); // não encontrou, portanto retorna -1
+
+    for (let i = 0; i < array_notas.length; i++) {
+        array_notas[i] = converte_nota(array_notas[i]);
+    }
+    console.log(array_notas.lastIndexOf("F"));
+
+    // Verificando se o valor está contido no meu array
+    console.log(array_notas.includes("E"));
+    console.log(array_notas.includes("A"));
+
+    // Remover elementos do fim e do início do meu array
+    console.log(array_notas.pop());
+    console.log(array_notas.shift());
+    console.log(array_notas);
+
+    // Vamos trabalhar com o splice...
+    //console.log(array_notas.splice(2));
+    console.log(array_notas.splice(2, 1, "A", "B"));
+    console.log(array_notas);
+
+    // Concatenar arrays
+    const array_notas2 = ["C", "D", "D"];
+    console.log(array_notas.concat(array_notas2, ["B", "J"]));
+
+    // Invertendo o meu array
+    array_notas.reverse();
+    console.log(array_notas);
+
+    // Ordenação de elementos do array
+    array_notas.sort();
+    console.log(array_notas);
+
+    // Se o array de notas fosse numérico e quiséssemos ordenar em ordem DECRESCENTE
+    // array_notas.sort((a, b) => b - a);
+    // console.log(array_notas);
+
+    // Lembrar de aprofundar em sort
+</script>
+
+</html>

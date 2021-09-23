@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Sétima Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <h1>Olá, seja bem-vindo!</h1>
+    
+</body>
+
+<script>
+    // 5) Condicionais:
+    let a = 3;
+
+    if (a == 3) {
+        console.log("\"a\" é igual a 3!");
+    } else if (a > 50) {
+        console.log("\"a\" é diferente de 3 e maior que 50!");
+    } else {
+        console.log("\"a\" é diferente de 3 e menor ou igual a 50!");
+    }
+
+    if (a == 3) console.log("\"a\" é igual a 3!");
+    else if (a > 50) console.log("\"a\" é diferente de 3 e maior que 50!");
+    else console.log("\"a\" é diferente de 3 e menor ou igual a 50!");
+
+    // Exemplo 1: Quero converter notas de 0 a 10 para conceitos de F até A
+    let nota = parseFloat(prompt("Digite uma nota de 0 a 10: "));
+    
+    if (nota < 0 || nota > 10) {
+        nota = parseFloat(prompt("Valor inválido! Digite novamente uma nota de 0 a 10: "));
+    }
+
+    // 9 ---- 10 => A
+    // 8 ---- 8.9 => B
+    // 7 ---- 7.9 => C
+    // 5 ---- 6.9 => D
+    // abaixo de 5 => F
+    if (nota >= 9) {
+        console.log("Conceito A");
+    } else if (nota >= 8) {
+        console.log("Conceito B");
+    } else if (nota >= 7) {
+        console.log("Conceito C");
+    } else if (nota >= 5) {
+        console.log("Conceito D");
+    } else {
+        console.log("Conceito F");
+    }
+
+    // Fazendo "ao contrário"
+    // if (nota < 5) {
+    //     console.log("conceito F");
+    // } else if (nota < 7) {
+    //     console.log("conceito D");
+    // } else if (nota < 8) {
+    //     console.log("conceito C");
+    // } else if (nota < 9) {
+    //     console.log("conceito B");
+    // } else {
+    //     console.log("conceito A");
+    // }
+
+    // One line if
+    let valor_msg = (a == 3)? "igual a" : "diferente de";
+    
+    console.log(`"a" é ${valor_msg} 3!`);
+
+    // Switch - Case
+
+    let sinal = prompt("Entre com a cor atual do sinal: ");
+    switch(sinal.toLowerCase()){
+        case 'verde' : 
+            console.log('pode passar');
+            break;
+        case 'amarelo' :
+            console.log('prestes a fechar, cuidado...');
+            break;
+        case 'vermelho':
+            console.log('fechado, não passe');
+            break;
+        default:
+            console.log('esse não é um valor válido');
+            break;
+    }
+
+    function mensagem_sinal() {
+        let sinal = prompt("Entre com a cor atual do sinal: ");
+        switch(sinal.toUpperCase()){
+            case 'VERDE' : 
+                return 'pode passar';
+            case 'AMARELO' :
+                return 'prestes a fechar, cuidado...';
+            case 'VERMELHO':
+                return 'fechado, não passe';
+            default:
+                return 'esse não é um valor válido';
+        }
+    }
+
+    console.log(mensagem_sinal());
+
+    // "==" VS "==="
+    if (10 == "10") {
+        console.log("10 é igual a \"10\"");
+    } else {
+        console.log("10 NÃO é igual a \"10\"");
+    }
+
+    if (10 === "10") {
+        console.log("10 é igual a \"10\"");
+    } else {
+        console.log("10 NÃO é igual a \"10\"");
+    }
+
+    // 6) Estruturas de Repetição
+    let nota = parseFloat(prompt("Digite uma nota de 0 a 10: "));
+    
+    while (nota < 0 || nota > 10) {
+        nota = parseFloat(prompt("Valor inválido! Digite novamente uma nota de 0 a 10: "));
+    }
+
+    let nota;
+    
+    do {
+        const invalido = nota? "Valor inválido! " : "";
+        nota = parseFloat(prompt(`${invalido}Digite novamente uma nota de 0 a 10: `));
+    } while (nota < 0 || nota > 10)
+
+    // Exemplo: Adivinhe o número!
+    const randomInt = function (min, max) {
+        return Math.ceil(Math.random() * (max - min) + min);
+    }
+
+    let num = randomInt(0, 10), input;
+    do {
+        input = prompt("Adivinhe o número gerado de 0 a 10!");
+    } while (num != input)
+
+    alert(`Parabéns, você acertou! O número gerado foi ${num}.`);
+</script>
+
+</html>

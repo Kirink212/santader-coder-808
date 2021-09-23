@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Sétima Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <h1>Olá, seja bem-vindo!</h1>
+    
+</body>
+
+<script>
+    // 6) Estruturas de Repetição (continuação):
+
+    // Exemplo: Quero converter notas de 0 a 10 para conceitos de F até A de N alunos
+    let qtdAlunos = parseInt(prompt("Digite a quantidade total de alunos: "));
+    let cont = 0; // inicializo o meu contador
+    
+    while (cont < qtdAlunos) { // comparo o meu contador com a qtd total
+        let nota = parseFloat(prompt("Digite uma nota de 0 a 10: "));
+    
+        while (nota < 0 || nota > 10) {
+            nota = parseFloat(prompt("Valor inválido! Digite novamente uma nota de 0 a 10: "));
+        }
+
+        // 9 ---- 10 => A
+        // 8 ---- 8.9 => B
+        // 7 ---- 7.9 => C
+        // 5 ---- 6.9 => D
+        // abaixo de 5 => F
+        if (nota >= 9) {
+            console.log("Conceito A");
+        } else if (nota >= 8) {
+            console.log("Conceito B");
+        } else if (nota >= 7) {
+            console.log("Conceito C");
+        } else if (nota >= 5) {
+            console.log("Conceito D");
+        } else {
+            console.log("Conceito F");
+        }
+
+        cont++; // incremento o meu contador
+    }
+
+    // Isso foi uma repetição determinada (sei quantas vezes isso vai rodar)
+
+    // Agora usando "for"...
+    let qtdAlunos = parseInt(prompt("Digite a quantidade total de alunos: "));
+    
+    for (let cont = 0; cont < qtdAlunos; cont++) {
+        let nota = parseFloat(prompt("Digite uma nota de 0 a 10: "));
+    
+        while (nota < 0 || nota > 10) {
+            nota = parseFloat(prompt("Valor inválido! Digite novamente uma nota de 0 a 10: "));
+        }
+
+        // 9 ---- 10 => A
+        // 8 ---- 8.9 => B
+        // 7 ---- 7.9 => C
+        // 5 ---- 6.9 => D
+        // abaixo de 5 => F
+        if (nota >= 9) {
+            console.log("Conceito A");
+        } else if (nota >= 8) {
+            console.log("Conceito B");
+        } else if (nota >= 7) {
+            console.log("Conceito C");
+        } else if (nota >= 5) {
+            console.log("Conceito D");
+        } else {
+            console.log("Conceito F");
+        }
+    }
+
+    // Pré-incremento
+    let a = 5;
+    let b = ++a;
+    console.log(a); // a = 6
+    console.log(b); // b = 6
+
+    // Pós-incremento
+    let a = 5;
+    let b = a++;
+    console.log(a); // a = 6
+    console.log(b); // b = 5
+
+    // "break" e "continue"
+    let qtdAlunos = parseInt(prompt("Digite a quantidade total de alunos: "));
+    let cont = 0; // inicializo o meu contador
+
+    while(true) {
+        if (cont >= qtdAlunos) {
+            break;
+        }
+
+        let nota = parseFloat(prompt("Digite uma nota de 0 a 10: "));
+    
+        while (nota < 0 || nota > 10) {
+            nota = parseFloat(prompt("Valor inválido! Digite novamente uma nota de 0 a 10: "));
+        }
+
+        // 9 ---- 10 => A
+        // 8 ---- 8.9 => B
+        // 7 ---- 7.9 => C
+        // 5 ---- 6.9 => D
+        // abaixo de 5 => F
+        if (nota >= 9) {
+            console.log("Conceito A");
+        } else if (nota >= 8) {
+            console.log("Conceito B");
+        } else if (nota >= 7) {
+            console.log("Conceito C");
+        } else if (nota >= 5) {
+            console.log("Conceito D");
+        } else {
+            console.log("Conceito F");
+        }
+
+        cont++; // incremento o meu contador
+    }
+
+    // Exemplo: Quero printar somente os números ímpares
+    for(let i=0; i<10; i++) {
+        if (i%2 == 0) {
+            continue;
+        }
+        console.log(i);
+    }
+</script>
+
+</html>

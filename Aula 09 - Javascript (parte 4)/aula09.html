@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Nona Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <h1>Olá, seja bem-vindo!</h1>
+</body>
+
+<script>
+    // 7) Array:
+    let array = [];
+
+    array["A"] = 10;
+    array["B"] = 8;
+
+    array[0] = 1;
+
+    console.log(array);
+
+    // 8) Objeto:
+    let obj = {
+        A: 10,
+        B: 12,
+        "É isso mesmo": 14,
+        0: 15,
+    };
+
+    // Acessando valores
+    console.log(obj);
+    console.log(obj.A);
+    console.log(obj.B);
+    console.log(obj["0"]);
+    console.log(obj["É isso mesmo"]);
+
+    // Atualizar ou criar chaves/valores
+    obj.A = "ABCDEFG";
+    console.log(obj);
+
+    // Percorrendo as chaves de um objeto
+    const aluno = {
+      nome: "Geraldo",
+      idade: 27,
+      xp: 0,
+      vidas: 3,
+    };
+    console.log(aluno);
+
+    console.log(Object.keys(aluno));
+    for (let key of Object.keys(aluno)) {
+        console.log(key, aluno[key]);
+    }
+
+    for (let key in aluno) {
+        console.log(key, aluno[key]);
+    }
+
+    console.log(Object.values(aluno));
+
+    // Não pode fazer desta forma
+    // for (let value of aluno) {
+    //     console.log(value, aluno);
+    // }
+
+    const array_alunos = [
+        {
+            nome: "Geraldo",
+            idade: 27,
+            xp: 0,
+            vidas() {
+                const { quando_perdeu } = this;
+                return 3 - quando_perdeu.length;
+            },
+            // vidas: function() {
+            //     const { quando_perdeu } = this;
+            //     return 3 - quando_perdeu.length;
+            // },
+            // vidas: function() {
+            //     return 3 - this.quando_perdeu.length;
+            // },
+            endereco: {
+                logradouro: "Avenida das Couves",
+                numero: 4,
+                complemento: "Prédio Azulado, apto 9001",
+            },
+            quando_perdeu: [{
+                data: "20/03/2021",
+                motivo: "Sequelou e mandou o trabalho 2 meses atrasado",
+            }],
+            fazer_atividade() {
+                console.log("Fazendo a atividade da semana...")
+            }
+        }
+    ];
+    console.log(array_alunos);
+    
+    const geraldao = array_alunos[0];
+
+    geraldao.fazer_atividade();
+
+    geraldao.vidas();
+
+    geraldao.quando_perdeu.push({
+        data: "20/06/2021",
+        motivo: "Tava comendo sopa enquanto tomava café",
+    });
+
+    console.log(geraldao.vidas());
+
+    console.log(this);
+</script>
+
+</html>

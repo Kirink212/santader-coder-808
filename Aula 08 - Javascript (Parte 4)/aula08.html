@@ -12,7 +12,6 @@
 </body>
 
 <script>
-
     // 7) Arrays:
 
     // Valor indexados por: 0 - 1 - 2 - 3 - 4 - 5 - 6 - 7
@@ -116,7 +115,66 @@
     // array_notas.sort((a, b) => b - a);
     // console.log(array_notas);
 
-    // Lembrar de aprofundar em sort
+    // Spread operator
+    let array2 = [1, 2, 3, 4, 5];
+
+    console.log(array2);
+    console.log(...array2); // console.log(1, 2, 3, 4, 5);
+
+    const [a, b, c] = array2;
+    console.log(a, b, c);
+
+    const [primeiro, segundo, ...resto] = array2;
+    console.log(primeiro, segundo, resto);
+
+    // Não funciona, somente no final para o "resto"
+    // const [...inicio, fim1, fim2] = array2;
+    // console.log(inicio);
+
+    // "Apontam" para a mesma área da memória, ou seja,
+    // se eu altero array5 eu altero também array2, e vice-versa
+    let array5 = array2;
+    array5.push("abcde");
+    console.log(array2);
+    console.log(array5);
+
+    // Se eu quiser copiar, eu tenho que fazer desta forma:
+    const array3 = [...array2];
+    console.log(array3);
+
+    const [...array4] = array2;
+    console.log(array4);
+
+    let array6 = [];
+    for (let i = 0; i < array3.length; i++) {
+        array6[i] = array2[i];
+    }
+    array6.push(23457);
+    console.log(array6);
+    console.log(array2);
+
+    // Matrizes
+    const matriz = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ];
+
+    // Acessando valores
+    console.log(matriz[0][1]);
+    console.log(matriz[2][2]);
+
+    // Atualizando valores
+    matriz[0][0] = 24;
+    matriz[1][2] = 25;
+    console.log(matriz);
+
+    // Percorrer todos os valores
+    for (let i = 0; i < matriz.length; i++) {
+        for (let j = 0; j < matriz[i].length; j++) {
+            console.log(matriz[i][j]);
+        }
+    }
 </script>
 
 </html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Décima Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <h1>Olá, seja bem-vindo!</h1>
+</body>
+
+<script>
+    // 8) Funções de Alta Ordem
+
+    // Recursão
+    function mostraCaracteres(string) {
+        for (let i=0; i < string.length; i++) {
+            console.log(string[i]);
+        }
+    }
+
+    function mostraCaracteresRecursiva(string) {
+        // debugger;
+        // Caso base
+        if (string == '') {
+            return;
+        }
+
+        console.log(string);
+        mostraCaracteresRecursiva(string.substr(1));
+        console.log(string);
+
+        // return; -> existe de forma implícita
+    }
+
+    // let arrayExemp = [1, 2, 3, 4, 5, 6];
+    // ['G', 'a', 'b', 'a', 'r', 'i', 't', 'o', ' ', 'C', 'e', 'r', 't', 'o']
+    console.log("Versão iterativa");
+    mostraCaracteres("Gabarito Certo");
+    // mostraCaracteres(arrayExemp);
+
+    console.log("Versão recursiva");
+    mostraCaracteresRecursiva("Gabarito Certo");
+
+    // Exemplo: Fatorial
+    function fatorial(n) {
+        let res = 1;
+
+        while(n > 1) {
+            res = res * n;
+            n--;
+        }
+
+        return res;
+    }
+
+    console.log(fatorial(5));
+
+    function fatorialRecursivaSafadona(n) {
+        // debugger;
+        if (n == 0) {
+            return 1;
+        }
+
+        return n * fatorialRecursivaSafadona(n-1);
+    }
+
+    console.log(fatorialRecursivaSafadona(5));
+
+    // Funções passadas por parâmetro
+    const somar = (a, b) => a + b;
+    const subtrair = (a, b) => a - b;
+    const multiplicar  = (a, b) => a * b;
+    const dividir = (a, b) => b > 0 ? a / b : NaN; 
+    const calcular = (operacao, a, b) => operacao(a,b);
+
+    const somarVarios = (...array_numeros) => {
+        let soma = 0
+        for (let num of array_numeros) {
+            soma += num;
+        }
+        console.log(soma);
+        return soma;
+    }
+    const calcularVarios = (operacao, ...array_numeros) => operacao(...array_numeros);
+    console.log(calcular(somar, 2, 6));
+    console.log(calcular(subtrair, 2, 6));
+    console.log(calcular(multiplicar, 2, 6));
+    console.log(calcular(dividir, 2, 6));
+
+    const mediaDeDois = (a, b) => calcular(dividir, calcular(somar, a, b), 2.0);
+
+    console.log(mediaDeDois(7, 4));
+
+    const media = (...array_numeros) => calcularVarios(dividir, calcularVarios(somarVarios, ...array_numeros), array_numeros.length);
+
+    console.log(media(2, 5, 6, 2, 4, 10, 9));
+    
+    // Funções de alta ordem de array
+    // (...)
+</script>
+
+</html>

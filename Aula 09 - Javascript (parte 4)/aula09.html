@@ -65,20 +65,26 @@
     //     console.log(value, aluno);
     // }
 
+    // Usando o "this"
     const array_alunos = [
         {
             nome: "Geraldo",
             idade: 27,
             xp: 0,
-            vidas() {
-                const { quando_perdeu } = this;
-                return 3 - quando_perdeu.length;
-            },
-            // vidas: function() {
+            // vidas() {
             //     const { quando_perdeu } = this;
             //     return 3 - quando_perdeu.length;
             // },
             // vidas: function() {
+            //     const { quando_perdeu } = this;
+            //     return 3 - quando_perdeu.length;
+            // },
+            vidas: function() {
+                console.log(this);
+                return 3 - this.quando_perdeu.length;
+            },
+            // vidas: () => {
+            //     console.log(this);
             //     return 3 - this.quando_perdeu.length;
             // },
             endereco: {
@@ -111,6 +117,58 @@
     console.log(geraldao.vidas());
 
     console.log(this);
+
+    const vidas = geraldao.vidas;
+    // console.log(vidas()); -> da erro, pois o this == Window
+
+    const obj2 = {
+        vidas: geraldao.vidas,
+        quando_perdeu: [],
+    }
+
+    console.log(obj2.vidas());
+
+    // Função bind()
+
+    const vidasAgoraVai = geraldao.vidas.bind(geraldao);
+
+    console.log(vidasAgoraVai());
+
+    const somar = function (n1, n2) {
+        console.log(this);
+        return n1 + n2;
+    }
+
+    const somar1 = somar.bind(geraldao, 5);
+
+    console.log(somar1(2));
+
+    // Função call()
+    console.log(somar.call(geraldao, 5));
+
+    // Exemplo do Wanderson
+    const alunoA = {
+        name: 'Cristiano'
+    };
+
+    const alunoB = {
+        name: 'Luís'
+    };
+
+    function showName () {
+        console.log('olá ', this.name);
+    }
+
+    showName.call(alunoA);
+    showName.call(alunoB);
+    showName();
+
+    // Função apply()
+    console.log(somar.apply(geraldao, [5, 9]));
+    // console.log(somar.apply(geraldao, 5, 9)); -> Resulta em erro, pois ele espera um array, não uma sequência de parâmetros
+
+    const parametros = [5, 9];
+    console.log(somar.call(geraldao, ...parametros));
 </script>
 
 </html>

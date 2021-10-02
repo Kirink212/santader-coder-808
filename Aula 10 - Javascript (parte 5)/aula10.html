@@ -28,6 +28,7 @@
         }
 
         console.log(string);
+        console.log(string[0]);
         mostraCaracteresRecursiva(string.substr(1));
         console.log(string);
 
@@ -68,6 +69,17 @@
 
     console.log(fatorialRecursivaSafadona(5));
 
+    function fibonacci(n) {
+        // debugger;
+        if (n <= 1) {
+            return n;
+        }
+
+        return fibonacci(n-1) + fibonacci(n-2);
+    }
+
+    console.log(fibonacci(4));
+
     // Funções passadas por parâmetro
     const somar = (a, b) => a + b;
     const subtrair = (a, b) => a - b;
@@ -98,7 +110,82 @@
     console.log(media(2, 5, 6, 2, 4, 10, 9));
     
     // Funções de alta ordem de array
-    // (...)
+    const contatos = [
+        { nome : 'contato1', telefone : '000000000'},
+        { nome : 'contato2', telefone : '111111111'},
+        // { nome : 'contato3', telefone : '222222222'},
+        { nome : 'contato4', telefone : '333333333'},
+        { nome : 'contato5', telefone : '444444444'},
+        { nome : 'contato3', telefone : '999999999'},
+    ];
+
+    let contato = contatos.find(c => c.nome === "contato3");
+    console.log(contato);
+
+    const byName = name => contato => contato.nome === name;
+
+    // A função acima equivale a esta função:
+    // const byName = function(name) {
+    //     return function (contato) {
+    //         return contato.nome === name;
+    //     };
+    // }
+
+    contato = contatos.find(byName("contato4"));
+    console.log(contato);
+
+    const alteraValor = c => {
+        c.telefone = 'abobrinha';
+        return true;
+    };
+
+    contatos.find(alteraValor);
+    console.log(contatos);
+
+    console.log(contatos.find(byName("contato7")));
+
+    console.log(contatos.findIndex(c => c.telefone === "444444444"));
+    // console.log(contatos.indexOf({nome: "contato4", telefone: "333333333"})); -> para este caso, como cada item do array é um objeto, precisamos usar o find
+
+    // console.log({nome: "contato4", telefone: "333333333"} == {nome: "contato4", telefone: "333333333"}); -> resulta em false
+
+    contatos.forEach(c => console.log(c));
+    // contatos.forEach(c => c.nome); -> não faz nada
+
+    const numeros = [2, 4, 6, 8, 10];
+    const lessThan10 = num => num <= 10;
+
+    console.log(numeros.every(lessThan10));
+
+    contatos.forEach((c, i, array) => console.log(c, i, array));
+
+    contatos.find((c, i, array) => {
+        console.log(c, i, array);
+        return true;
+    });
+
+    Array.prototype.print = function() {
+        console.log(this);
+    };
+
+    [10, 4, 5, 6, 1].print();
+
+    Array.prototype.printDoWanderson = console.log;
+    [1, 2, 3, 4].printDoWanderson('eu apareço');
+
+    const arrayExemplo = ['a', 'b', 'c'];
+    arrayExemplo.print();
+
+    Array.prototype.forEach2 = function(func, thisArg){
+        for(let i = 0; i < this.length; i++){
+            func.call(thisArg, this[i], i, this);
+        }
+    }
+
+    contatos.forEach2(function (c, i, array) {
+        console.log(this);
+        console.log(c, i, array);
+    });
 </script>
 
 </html>

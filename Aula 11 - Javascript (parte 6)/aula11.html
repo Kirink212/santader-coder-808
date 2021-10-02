@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Décima Primeira Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <h1>Olá, seja bem-vindo!</h1>
+</body>
+
+<script>
+    // 8) Funções de Alta Ordem (map, filter e reduce)
+
+    let numeros = [1, 2, 3, 4, 5, 6];
+
+    //// MAP
+
+    console.log(numeros);
+    // for (let i=0; i < numeros.length; i++) {
+    //     numeros[i] *= 2;
+    // }
+    // console.log(numeros);
+
+    numeros = numeros.map(num => num*2);
+    console.log(numeros);
+
+    const valores = [9.56, 10.0, 25.90, 12.35];
+
+    console.log(valores.map(Math.round));
+    console.log(valores);
+
+    //// FILTER
+
+    console.log(numeros.filter(num => num > 6));
+    console.log(numeros);
+
+    console.log(numeros.filter(num => num > 30));
+    console.log(numeros);
+
+    //// REDUCE
+
+    let soma = 0;
+    for (let i=0; i<numeros.length; i++) {
+        console.log(soma);
+        soma = soma + numeros[i];
+    }
+    console.log(soma);
+
+    console.log(numeros.reduce((soma, num) => { 
+        console.log(soma);
+        return soma + num;
+    }, 0));
+
+    numeros = [1, 2, 3, 4, 5];
+    console.log(numeros.reduce((arr, item) => {
+        console.log(arr);
+        arr = [...arr, item * 2];
+        return arr;
+    }, []));
+    console.log(numeros);
+</script>
+
+</html>

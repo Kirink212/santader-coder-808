@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Décima Segunda Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <h1>Olá, seja bem-vindo!</h1>
+</body>
+
+<script>
+    // Classe: Abstração de uma "entidade" da vida real
+    // Atributo: Característica ligada a uma classe
+    // Método: Função (ações, calculos, etc) ligada a uma classe
+    // Instância: Um objeto criado a partir do "molde" da classe
+    // Herança: Uma classe genérica será mãe/pai de outras classes, que herdarão seus artributos e métodos
+
+    class Pokebola {
+        #chanceBase = 0.4;
+
+        constructor(usada = false, ocupada = false) {
+            this.cor = "Vermelha";
+            this.usada = usada;
+            this.ocupada = ocupada;
+        }
+
+        get chance() {
+            return this.#chanceBase;
+        }
+
+        set chance(chanceBase) {
+            if (chanceBase > 1 || chanceBase < 0.1) throw "Valor da chance base deve ser entre 0.1 e 1!"
+            this.#chanceBase = chanceBase;
+        }
+    }
+
+    class PokebolaGreat extends Pokebola {
+        static chanceMult = 1.5;
+
+        constructor(usada = false, ocupada = false) {
+            super(usada, ocupada);
+            this.cor = "Azul";
+        }
+
+        get chance() {
+            // return 1.5 * this.chanceBase;
+            return PokebolaGreat.chanceMult * super.chance;
+        }
+    }
+
+    class PokebolaUltra extends Pokebola {
+        constructor(usada = false, ocupada = false) {
+            super(usada, ocupada);
+            this.cor = "Preata e Dourada";
+        }
+
+        get chance() {
+            return 2 * super.chance;
+        }
+    }
+
+    class Tipo {
+        constructor(nome, forte_contra = [], fraco_contra = [], resistente_a = [], vulneravel_a = []) {
+            this.nome = nome;
+            this.forte_contra = forte_contra;
+            this.fraco_contra = fraco_contra;
+            this.resistente_a = resistente_a;
+            this.vulneravel_a = vulneravel_a;
+        }
+    }
+
+    class Pokemon {
+        constructor(nome, peso, altura, genero, tipos, shiny = false, ataques = ["Tackle"], evolucao_ant = null, evolucao_prox = null) {
+            this.nome = nome;
+            this.peso = peso;
+            this.altura = altura;
+            this.genero = genero;
+            this.tipos = tipos;
+            this.shiny = shiny;
+            this.ataques = ataques;
+            this.evolucao_ant = evolucao_ant;
+            this.evolucao_prox = evolucao_prox;
+        }
+
+        atacar(indice_ataque) {
+            console.log(this.nome, "usou", this.ataques[indice_ataque]);
+        }
+
+        visualizar_ataques() {
+            console.log("Os ataques disponíveis são: ", this.ataques);
+        }
+
+        evoluir() {
+            if (this.evolucao_prox) {
+                console.log(this.nome, "digivolve para ", this.evolucao_prox.nome);
+            } else {
+                console.log("Não existe uma próxima evolução");
+            }
+
+            return this.evolucao_prox;
+        }
+
+        mostrar_vulnerabilidades() {
+            const vulnerabilidades = this.tipos.reduce((anterior, atual) => {
+                const nao_dup = atual.vulneravel_a.filter((vuln) => {
+                    return !anterior.includes(vuln);
+                })
+
+                return [
+                    ...anterior, 
+                    ...nao_dup
+                ];
+            }, []);
+
+            // console.log([...new Set(vulnerabilidades)]);
+            console.log(vulnerabilidades);
+        }
+    }
+
+    let tipoNormal = new Tipo("Normal", [], ["Rock", "Ghost", "Steel"], ["Ghost"], ["Fighting"])
+    let poke1 = new Pokemon("Snorlax", 1000, 2, "M", [tipoNormal]);
+
+    let pokeObj1 = {
+        nome: "Snorlax",
+        peso: 1000,
+        altura: 2,
+        genero: "M",
+        tipos: ["Normal"],
+        shiny: false,
+        ataques: ["tackle"],
+        evolucao_ant: null,
+        evolucao_prox: null,
+        atacar: function(indice_ataque) {
+            console.log(this.ataques[indice_ataque]);
+        }
+    };
+
+    poke1.visualizar_ataques();
+    poke1.atacar(0);
+
+    console.log(poke1);
+    console.log(pokeObj1);
+
+    let tipoPlanta = new Tipo(
+        "Grass",
+        ["Ground", "Rock", "Water"],
+        ["Flying", "Poison", "Bug", "Steel", "Fire", "Grass", "Dragon"],
+        ["Ground", "Water", "Grass", "Electric"],
+        ["Flying", "Poison", "Bug", "Fire", "Ice", "Fighting"]
+    )
+
+    let bulbasaur = new Pokemon("Bulbasaur", 6.9, 0.7, "M", [tipoPlanta, tipoNormal]);
+    let ivysaur = new Pokemon("Ivysaur", 6.9, 0.7, "M", [tipoPlanta, tipoNormal]);
+    let venusaur = new Pokemon("Venusaur", 6.9, 0.7, "M", [tipoPlanta, tipoNormal]);
+
+    bulbasaur.evolucao_prox = ivysaur; // Ivysaur é evolução do Bulbasaur
+
+    ivysaur.evolucao_ant = bulbasaur;
+    ivysaur.evolucao_prox = venusaur;
+
+    venusaur.evolucao_ant = ivysaur;
+
+    console.log(bulbasaur);
+    console.log(ivysaur);
+    console.log(venusaur);
+
+    bulbasaur.evoluir();
+
+    bulbasaur.mostrar_vulnerabilidades();
+
+
+    let pb1 = new Pokebola();
+    let pb2 = new PokebolaGreat();
+    let pb3 = new PokebolaUltra();
+
+    console.log(pb1.chance);
+    console.log(pb2.chance);
+    console.log(pb3.chance);
+
+    console.log(pb1.chanceBase); // undefined
+
+    pb1.chance = 0.5;
+
+    console.log(pb1.chance);
+    console.log(pb2.chance);
+    console.log(pb3.chance);
+    console.log(pb2.chanceMult); // undefined
+    console.log(PokebolaGreat.chanceMult);
+
+    pb1.chance = 0;
+</script>
+
+</html>

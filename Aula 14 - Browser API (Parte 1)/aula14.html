@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Décima Quarta Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+
+    <script>
+        let p_boladaos = document.getElementsByClassName("p-boladao");
+        console.log(p_boladaos); // HTMLCollection vazio
+    </script>
+</head>
+
+<body>
+    <h1 name="titulo">Olá, seja bem-vindo!</h1>
+
+    <ul>
+        <li id='item1'>Item 1</li>
+        <li id='item2'>Item 2</li>
+        <li id='item3'>Item 3</li>
+        <li id='item4'>Item 4</li>
+    </ul>
+
+    <p class='p-boladao'>Conteúdo 1</p>
+    <p class='p-boladao'>Conteúdo 2</p>
+
+    <div name="div-boladao"></div>
+</body>
+
+<script>
+    let variavel = 120;
+
+    // Objeto global window
+    console.log(window);
+    console.log(this);
+
+    function teste() {
+        var variavel2 = 130;
+
+        console.log(window.variavel2); // também será undefined
+    }
+
+    teste();
+    console.log(window.variavel); // para funcionar basta criar "var variavel"
+    console.log(window.variavel2); // fica undefined pois esta variável só existe no escopo da função "teste"
+
+    // Objeto document: Referência ao DOM
+    console.log(window.document);
+    console.log(document);
+
+    // Buscando os objetos no meu DOM
+
+    // Por id
+    const item3 = document.getElementById("item3")
+    console.log(item3);
+
+    const item2 = document.querySelector("#item2");
+    console.log(item2);
+
+    // Por classe
+    p_boladaos = document.getElementsByClassName("p-boladao");
+    console.log(p_boladaos);
+
+    const p_boladao = document.querySelector(".p-boladao");
+    console.log(p_boladao);
+
+    p_boladaos = document.querySelectorAll(".p-boladao");
+    console.log(p_boladaos);
+
+    // Por nome
+    let div_boladaos = document.getElementsByName("div-boladao");
+    console.log(div_boladaos);
+
+    let multiplos_elem = document.querySelectorAll("[name='div-boladao'], [name='titulo']");
+    console.log(multiplos_elem);
+
+    // Por nome de tag
+    let list_items = document.getElementsByTagName("li");
+    console.log(list_items);
+    console.log(list_items.item1);
+    console.log(list_items[1]);
+
+    list_items = document.getElementsByTagNameNS("*", "li");
+    console.log(list_items);
+</script>
+
+</html>

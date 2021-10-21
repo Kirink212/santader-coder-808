@@ -53,7 +53,7 @@
     class PokebolaUltra extends Pokebola {
         constructor(usada = false, ocupada = false) {
             super(usada, ocupada);
-            this.cor = "Preata e Dourada";
+            this.cor = "Prata e Dourada";
         }
 
         get chance() {
@@ -189,7 +189,25 @@
     console.log(pb2.chanceMult); // undefined
     console.log(PokebolaGreat.chanceMult);
 
-    pb1.chance = 0;
+    // pb1.chance = 0; // "Sobe" um erro criado dentro do método setter
+
+    class Foo {
+        static #privateField = 42;
+
+        static get privateField() {
+            return Foo.#privateField;
+        }
+
+        static set privateField(value) {
+          Foo.#privateField = value;
+        }
+    }
+
+    console.log(Foo.privateField);
+
+    Foo.privateField = 100;
+
+    console.log(Foo.privateField);
 </script>
 
 </html>

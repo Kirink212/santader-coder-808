@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Décima Terceira Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <h1>Olá, seja bem-vindo!</h1>
+</body>
+
+<script>
+    class VeiculoTerrestre {
+        #velocidadeAtual = 0;
+        #qtdPassageiros = 0;
+
+        constructor(passageiros, cargaMaxima, velocidadeMaxima) {
+            this.passageiros = passageiros;
+            this.cargaMaxima = cargaMaxima;
+            this.velocidadeMaxima = velocidadeMaxima;
+        }
+
+        get velocidadeAtual() {
+            return this.#velocidadeAtual;
+        }
+
+        get qtdPassageiros() {
+            return this.#qtdPassageiros;
+        }
+
+        movimentar(acel) {
+            this.#velocidadeAtual = Math.max(Math.min(this.#velocidadeAtual + 10 * acel, this.velocidadeMaxima), 0);
+        }
+
+        carregarPassageiros(n) {
+            this.#qtdPassageiros = Math.min(this.#qtdPassageiros + n, this.passageiros);
+        }
+
+        descarregarPassageiros(n) {
+            if (this.#qtdPassageiros < n) return;
+            
+            this.#qtdPassageiros -= n;
+        }
+
+        // carregar() {
+            
+        // }
+
+        // descarregar() {
+            
+        // }
+    }
+
+    class Carro extends VeiculoTerrestre {
+        static rodas = 4;
+
+        constructor(passageiros, cargaMaxima, velocidadeMaxima, portas) {
+            super(passageiros, cargaMaxima, velocidadeMaxima);
+            this.portas = portas;
+        }
+
+        abrirPortaMalas() {
+            console.log("Abrindo porta malas...");
+        }
+    }
+
+    class Moto extends VeiculoTerrestre {
+        static rodas = 2;
+
+        constructor(cargaMaxima, velocidadeMaxima, possuiBau = false) {
+            super(possuiBau? 1 : 2, cargaMaxima, velocidadeMaxima);
+            this.possuiBau = possuiBau;
+        }
+
+        abrirBau() {
+            if (!this.possuiBau) return;
+            
+            console.log("Abrindo o baú no grau...");
+        }
+    }
+
+    let carro1 = new Carro(2, 300, 250, 2);
+    let carro2 = new Carro(4, 500, 200, 4);
+    let moto1 = new Moto(200, 150, true);
+    let moto2 = new Moto(200, 300);
+
+    let veiculo = new VeiculoTerrestre(3, 200, 200);
+
+    console.log(carro1);
+    console.log(carro2);
+    console.log(moto1);
+    console.log(moto2);
+    console.log(veiculo);
+
+    console.log(Carro.rodas);
+    console.log(Moto.rodas);
+</script>
+
+</html>

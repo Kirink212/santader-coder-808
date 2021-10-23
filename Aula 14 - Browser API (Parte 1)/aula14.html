@@ -5,26 +5,43 @@
     <title>Décima Quarta Página | Santander Coders</title>
     <meta charset='UTF-8' />
 
-    <script>
+    <script >
         let p_boladaos = document.getElementsByClassName("p-boladao");
         console.log(p_boladaos); // HTMLCollection vazio
     </script>
+
+    <style>
+        .p-boladao {
+            color: red;
+        }
+
+        .p-nao-boladao {
+            color: blue;
+        }
+    </style>
 </head>
 
 <body>
     <h1 name="titulo">Olá, seja bem-vindo!</h1>
 
-    <ul>
+    <ul id="list-of-items" banana='qualquer coisa' data-banana-real='dados e mais dados importantes'>
         <li id='item1'>Item 1</li>
         <li id='item2'>Item 2</li>
         <li id='item3'>Item 3</li>
         <li id='item4'>Item 4</li>
     </ul>
 
-    <p class='p-boladao'>Conteúdo 1</p>
-    <p class='p-boladao'>Conteúdo 2</p>
+    <p id='c1' class='p-boladao teste'>Conteúdo 1</p>
+    <p id='c2' class='p-boladao'>Conteúdo 2</p>
 
     <div name="div-boladao"></div>
+
+    <button id="add-elem">Adicionar novo elemento</button>
+
+    <form id="form">
+        <input id="nome" type="text" />
+        <input id="submit" type="submit" />
+    </form>
 </body>
 
 <script>
@@ -82,6 +99,97 @@
 
     list_items = document.getElementsByTagNameNS("*", "li");
     console.log(list_items);
+
+    let array_items = [...list_items];
+
+    console.log(array_items.map((item) => {
+        return item;
+    }));
+
+    // Manipulando os elementos do meu DOM
+    console.log(item2);
+
+    console.log(item2.innerText);
+    console.log(item2.innerHTML);
+
+    item2.innerText = "Testando";
+    item2.innerHTML = "<p>asdasdasdasd</p><p>asdasdasdasd</p>";
+
+    console.log(item2.innerText);
+    console.log(item2.innerHTML);
+
+    // Criando novos elementos no meu document
+    const text = document.createTextNode('Olá!');
+    console.log(text);
+
+    const novo_p = document.createElement('p');
+    console.log(novo_p);
+
+    let div = div_boladaos[0];
+    console.log(div);
+
+    novo_p.appendChild(text);
+    div.appendChild(novo_p);
+
+    div.append("Teste");
+
+    console.log(item3);
+    console.log(item3.parentElement);
+    
+    item3.remove();
+    console.log(item3);
+    console.log(item3.parentElement);
+
+    // item2.before(item3); // insere antes do item2
+    // item2.after(item3); // insere após do item2
+
+    const ul = item2.parentElement;
+    console.log(ul.children);
+    ul.appendChild(item3);
+
+    console.log(item2.id);
+    console.log(item2.className);
+    console.log(item2.classList);
+
+    const c1 = document.getElementById("c1");
+    console.log(c1);
+    console.log(c1.id);
+    console.log(c1.className);
+    console.log(c1.classList);
+
+    c1.classList.remove('teste');
+
+    console.log(c1.classList);
+
+    c1.classList.add('p-nao-boladao');
+
+    console.log(c1.classList);
+
+    const button = document.getElementById('add-elem');
+    button.addEventListener('click', () => {
+        const ulist = document.getElementById('list-of-items');
+        const novo_id = ulist.childElementCount + 1;
+        const text_content = 'Item ' + novo_id;
+        const nome = document.createTextNode(text_content);
+        const list_item = document.createElement("li");
+        
+        console.log(ulist.getAttribute('banana'));
+        console.log(ulist.dataset.bananaReal);
+
+        // list_item.id = text_content.toLowerCase().replace(' ', '');
+        list_item.setAttribute('id', text_content.toLowerCase().replaceAll(' ', ''));
+        console.log(list_item['id']);
+        list_item.appendChild(nome);
+        ulist.appendChild(list_item);
+    });
+
+    const submit_button = document.getElementById('submit');
+    submit_button.addEventListener('click', function(event) {
+        console.log(this);
+        console.log(event.target);
+        alert('HÁ, TROLLEI!');
+        event.preventDefault();
+    });
 </script>
 
 </html>

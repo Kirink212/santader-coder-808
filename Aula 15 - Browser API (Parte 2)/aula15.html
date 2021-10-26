@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Décima Quinta Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <h1 name="titulo">Olá, seja bem-vindo!</h1>
+
+    <form id="form">
+        <input id="nome" type="text" />
+        <input id="submit" type="submit" />
+    </form>
+</body>
+
+<script>
+    // Session e Local Storages
+
+    // sessionStorage.setItem("Nome", "Luís Fernando Teixeira Bicalho");
+    localStorage.setItem("Nome", "Luís Fernando Teixeira Bicalho");
+
+    let nome = localStorage.getItem("Nome");
+    console.log("O nome registrado no storage é:", nome);
+
+    // Cookies
+    
+    document.cookie = "Nome=Luis Fernando; expires=Tue, 26 Oct 2021 00:18:00 UTC; path=/; domain=127.0.0.1";
+    // localStorage.clear();
+
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+
+        return "";
+    }
+
+    setCookie("Nome2", "Cristiano Neves", 2);
+
+    console.log(getCookie("Nome2"));
+
+    // setTimeout e setInterval
+
+    setTimeout(function() {
+        console.log("Rodei com o setTimeout!")
+    }, 0);
+
+    setInterval(function() {
+        console.log("Rodei com o setInterval!")
+    }, 2500);
+
+    console.log("Vou ser printado primeiro 1!");
+    console.log("Vou ser printado primeiro 2!");
+</script>
+
+</html>

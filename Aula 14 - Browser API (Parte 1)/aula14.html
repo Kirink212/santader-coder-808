@@ -5,7 +5,7 @@
     <title>Décima Quarta Página | Santander Coders</title>
     <meta charset='UTF-8' />
 
-    <script >
+    <script>
         let p_boladaos = document.getElementsByClassName("p-boladao");
         console.log(p_boladaos); // HTMLCollection vazio
     </script>
@@ -34,13 +34,18 @@
     <p id='c1' class='p-boladao teste'>Conteúdo 1</p>
     <p id='c2' class='p-boladao'>Conteúdo 2</p>
 
-    <div name="div-boladao"></div>
+    <div onmouseover="this.classList.add('p-boladao')" onmouseout="this.classList.remove('p-boladao')" name="div-boladao"></div>
+    <!-- <div onmouseover="this.classList.toggle('p-boladao')" name="div-boladao"></div> não faz a mesma coisa que a de cima, comportamento diferente -->
 
     <button id="add-elem">Adicionar novo elemento</button>
+
+    <button id="bt-zoadao" onclick="alertaZoado(event)">Só pra zoar</button>
 
     <form id="form">
         <input id="nome" type="text" />
         <input id="submit" type="submit" />
+
+        <input onfocus="console.log('foquei no input!')" onblur="console.log('desfoquei do input!')">
     </form>
 </body>
 
@@ -188,8 +193,28 @@
         console.log(this);
         console.log(event.target);
         alert('HÁ, TROLLEI!');
+
         event.preventDefault();
+    }, { once: true });
+
+    function alertaZoado(event) {
+        console.log(event);
+        alert('Só to te zoando mermo!');
+    }
+
+    document.addEventListener('keydown', function(event) {
+        console.log(event);
+        switch (event.code) {
+            case 'Enter':
+                const bt = document.querySelector('#bt-zoadao');
+                bt.click();
+                break;
+            default:
+                break;
+        }
     });
+
+    
 </script>
 
 </html>

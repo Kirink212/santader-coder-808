@@ -25,9 +25,10 @@
     console.log("O nome registrado no storage é:", nome);
 
     // Cookies
-    
     document.cookie = "Nome=Luis Fernando; expires=Tue, 26 Oct 2021 00:18:00 UTC; path=/; domain=127.0.0.1";
-    // localStorage.clear();
+    
+    // localStorage.clear(); -> Limpando todas as chaves do storage
+    // localStorage.removeItem('Nome'); -> Limpando somente a chave indicada
 
     function setCookie(cname, cvalue, exdays) {
         const d = new Date();
@@ -61,11 +62,11 @@
     // setTimeout e setInterval
 
     setTimeout(function() {
-        console.log("Rodei com o setTimeout!")
-    }, 0);
+        console.log("Rodei com o setTimeout!");
+    }, 2000);
 
     setInterval(function() {
-        console.log("Rodei com o setInterval!")
+        console.log("Rodei com o setInterval!");
     }, 2500);
 
     console.log("Vou ser printado primeiro 1!");

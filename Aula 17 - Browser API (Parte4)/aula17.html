@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Décima Sétima Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <h1 name="titulo">Olá, seja bem-vindo!</h1>
+</body>
+
+<script>
+    // Callbacks
+
+    setInterval(() => {
+        console.log(".");
+    }, 1000);
+
+    const baseFunction = function (time, callback) {
+        setTimeout(() => callback(), time);
+    }
+
+    let orderPizza = baseFunction.bind(this, 2000);
+    let waitUntilTheyFinishEating = baseFunction.bind(this, 3000);
+    let goToTheShow = baseFunction.bind(this, 5000);
+    let makeCallToMyFriend = baseFunction.bind(this, 2000);
+
+    // Callback hell!!!
+    // orderPizza(() => {
+    //     console.log(`Minha pizza está pronta.`); 
+
+    //     waitUntilTheyFinishEating(() => {
+    //         console.log('Acabaram de comer. Vamos para o show.');
+            
+    //         goToTheShow(() => {
+    //             console.log('Chegamos');
+                
+    //             makeCallToMyFriend(() => {
+    //                 console.log('Finalmente acabou. Que comece o show!');
+    //             });
+    //         });
+    //     });
+    // });
+
+    const baseFunctionPromise = function(time) {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve();
+            }, time);
+        });
+    }
+
+    orderPizza = baseFunctionPromise.bind(this, 2000);
+    waitUntilTheyFinishEating = baseFunctionPromise.bind(this, 3000);
+    goToTheShow = baseFunctionPromise.bind(this, 5000);
+    makeCallToMyFriend = baseFunctionPromise.bind(this, 2000);
+
+    // orderPizza().then(() => {
+    //     console.log(`Minha pizza está pronta.`);
+
+    //     return waitUntilTheyFinishEating();
+    // }).then(() => {
+    //     console.log('Acabaram de comer. Vamos para o show.');
+
+    //     return goToTheShow();
+    // }).then(() => {
+    //     console.log('Chegamos');
+
+    //     return makeCallToMyFriend();
+    // }).then(() => {
+    //     console.log('Finalmente acabou. Que comece o show!');
+    // });
+
+    async function pizzaShowFlow() {
+        await orderPizza();
+        console.log(`Minha pizza está pronta.`);
+
+        await waitUntilTheyFinishEating();
+        console.log('Acabaram de comer. Vamos para o show.');
+
+        await goToTheShow();
+        console.log('Chegamos');
+
+        await makeCallToMyFriend();
+        console.log('Finalmente acabou. Que comece o show!');
+    }
+
+    pizzaShowFlow().then(() => console.log("O show acabou! Muito bom!!"));
+</script>
+
+</html>

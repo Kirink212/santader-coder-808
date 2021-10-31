@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Décima Sexta Página | Santander Coders</title>
+    <meta charset='UTF-8' />
+</head>
+
+<body>
+    <h1 name="titulo">Olá, seja bem-vindo!</h1>
+</body>
+
+<script>
+    // Funções assíncronas -> O exemplo abaixo resulta em um erro no console
+    // const getTodo = () => {
+    //     setTimeout(() => {
+    //         return { text: 'Complete Code Example' }
+    //     }, 2000)
+    // }
+    // const todo = getTodo()
+    // console.log(todo.text)
+
+    // Callbacks
+    setInterval(() => {
+        console.log(".");
+    }, 1000);
+
+    const getTodo = (callback) => {
+        setTimeout(() => {
+            // Execução de passos
+            callback({ text: 'Complete Code Example' });
+        }, 3000);
+    };
+
+    // getTodo((todo) => {
+    //     console.log(todo.text);
+    // });
+
+    // Promises
+    const getTodoPromise = () => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const error = false;
+
+                if (!error) { // Funcionou de boa!
+                    resolve({ text: 'Complete Code Example' });
+                } else { // Deu ruim... :(
+                    reject();
+                }
+            }, 2000);
+        });
+    };
+
+    // getTodoPromise().then((todo) => {
+    //     console.log(todo.text);
+    // }).catch((_) => {
+    //     console.log("Deu ruim... :(");
+    // });
+
+    // Async/Await
+
+    async function fetchTodo() {
+        const todo = await getTodoPromise();
+        return todo;
+    }
+
+    // fetchTodo().then((todo) => {
+    //     console.log(todo.text);
+    // }).catch((_) => {
+    //     console.log("Deu ruim... :(");
+    // });
+
+    // Exemplo 2:
+    async function getUser() {
+        const BASE_URL = 'https://jsonplaceholder.typicode.com/users';
+        const userID = Math.floor(Math.random() * 10) + 1;
+
+        console.log("Passo 1");
+        
+        let response;
+        try {
+            response = await fetch(`${BASE_URL}/${userID}`);
+        } catch {
+            throw new Error("Erro no fetch");
+        }
+
+        if (response) {
+            console.log("Passo 2", response);
+            const users = await response.json();
+            console.log("Passo 3", users);
+
+            return users;
+        }
+    }
+
+    console.log("Antes");
+    getUser().then((data) => console.log(data))
+             .catch((error) => console.log(error));
+    console.log("Depois");
+</script>
+
+</html>
